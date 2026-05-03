@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    
+    <meta name="author" content="Austerity(Misaka10548)">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://misaka10548.github.io/post/2026/02/11/7875c8a8/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="寒霜Austerity的博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[水]起于2026-01-31 23:03的一件事">
+<meta property="og:url" content="https://misaka10548.github.io/post/2026/02/11/7875c8a8/index.html">
+<meta property="og:site_name" content="Austerity&#39;s Blog">
+<meta property="og:description" content="寒霜Austerity的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://misaka10548.github.io/images/redefine-og.webp">
+<meta property="article:published_time" content="2026-02-11T10:44:13.000Z">
+<meta property="article:modified_time" content="2026-02-12T03:01:42.000Z">
+<meta property="article:author" content="Austerity">
+<meta property="article:tag" content="C#">
+<meta property="article:tag" content="Microsoft 365">
+<meta property="article:tag" content="Microsoft Graph API">
+<meta property="article:tag" content="水">
+<meta property="article:tag" content="邮件">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://misaka10548.github.io/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/avatar.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.jpg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/avatar.jpg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            [水]起于2026-01-31 23:03的一件事 | Austerity&#39;s Blog
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"misaka10548.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":6,"number":true,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"寒霜Austerity的博客"},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"寒霜Austerity的博客","subtitle":{"text":["或许是一个可以忽略的小站？","流逝的过往，FadedPresence"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":[{"icon":"fa-brands fa-github","url":"https://github.com/Misaka10548"},{"icon":"fa-solid fa-at","url":"mailto:publicemail@again37.dpdns.org"}],"qrs":[]}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":true,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":true,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"About":{"icon":"fa-regular fa-user","submenus":{"About":"/about","Github":"https://github.com/Misaka10548","Blog(GH Pages)":"https://misaka10548.github.io/","Friends":"/links"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2025/12/06 16:13:50","statistics":true,"customize":null,"icp":{"enable":false,"number":null,"url":null}},"footerStart":"2025/12/06 16:13:50","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.i18n = {"search":"站内搜索您需要的内容...","toc":"目录","prev":"上一页","next":"下一页","prev_posts":"上一篇","next_posts":"下一篇","page":"第 %d 页","recent_posts":"最新文章","share":"分享","powered_by":"由 %s 驱动","theme":"主题","rss_feed":"RSS Feed","category":"分类","categories":"分类","tag":"标签","tags":"标签","post":"文章","posts":"文章","tagcloud":"标签云","comment":"评论","comments":"评论","top":"置顶","sticky":"置顶","go-back-home":"回到首页","masonry_loading":"照片加载中...","image_viewer":"图片查看器","close":"关闭","exif":{"title":"EXIF","cards":{"camera":"相机","lens":"镜头","exposure":"曝光","other":"其他"},"fields":{"make":"品牌","model":"机型","date_taken":"拍摄时间","lens_model":"镜头","focal_length":"焦距","focus_mode":"对焦模式","shutter":"快门","aperture":"光圈","iso":"感光度","exposure_program":"曝光程序","exposure_compensation":"曝光补偿","metering_mode":"测光模式","flash":"闪光灯","white_balance":"白平衡","latitude":"纬度","longitude":"经度","altitude":"海拔"},"status":{"loading":"加载中...","no_exif":"无 EXIF 信息","library_missing":"EXIF 库未加载","image_source_missing":"图片地址不可用","unavailable":"EXIF 不可用（可能被 CORS 阻止或缺少元数据）","flag_unavailable":"EXIF 不可用"}},"home":"首页","archive":"归档","archives":"归档","about":"关于","links":"链接","link":"链接","friends":"友情链接","friend":"友情链接","timeline":"时间轴","shuoshuo":"说说","bookmarks":"书签","site_uv":"访问人数","site_pv":"总访问量","read_more":"阅读全文","wordcount":"字","min2read":"分钟","changelog":"更新日志","status":"状态","runtime":"博客已运行","days":"天","hours":"小时","minutes":"分钟","seconds":"秒","optimized_by":"并由 Evan 进行优化","rights":"版权所有","site_posts":"共撰写了 %s 篇文章","site_wordcount":"共 %s 字","copyright":{"title":"标题","author":"作者","link":"链接","create_time":"创建于","update_time":"更新于","license_title":"版权声明","license_content":"本文章采用 %s 进行许可。","all_rights_reserved":"版权所有 &#169 %s，禁止转载。","public_domain":"本文为公有领域作品，可自由转载、引用。"},"ago":{"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"},"create_time":"创建","update_time":"更新","expired":"这篇文章最后更新于 %s 天前，内容可能已经过时。"};
+    window.data = {"masonry":true};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><link rel="alternate" href="/atom.xml" title="Austerity's Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+	<span class="scroll-progress-bar"></span>
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Austerity&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    关于
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/Misaka10548">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="https://misaka10548.github.io/">
+                                                    BLOG(GH PAGES)
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/links">
+                                                    友情链接
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">关于</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/Misaka10548">GITHUB</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="https://misaka10548.github.io/">BLOG(GH PAGES)</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/links">友情链接</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">10</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">[水]起于2026-01-31 23:03的一件事</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="/images/avatar.jpg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">Austerity(Misaka10548)</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv1</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-02-11 18:44:13</span>
+        <span class="mobile">2026-02-11 18:44:13</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-02-12 11:01:42</span>
+            <span class="mobile">2026-02-12 11:01:42</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E7%81%8C%E6%B0%B4/">灌水</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%B0%B4/">水</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/C/">C#</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E9%82%AE%E4%BB%B6/">邮件</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Microsoft-Graph-API/">Microsoft Graph API</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Microsoft-365/">Microsoft 365</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.8k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>7 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h2 id="起于">起于</h2>
+<p>事情起于这样我们群中一句话： <blockquote><p>为了不借助DDNS就搞到电脑的IP，我打算搞个自动的Python脚本获取IP并邮件发送<br>
+这样子春节就可以远程操控</p>
+<footer><strong>霂里梦呓</strong></footer></blockquote></p>
+<p>（他）打算如下</p>
+<ol type="1">
+<li>自启动</li>
+<li>检测网络通断</li>
+<li>ipconfig获取ip</li>
+<li>发邮件给自己</li>
+</ol>
+<p>虽然还没有开始怎么学习编程，我打算拿来练练手，只不过是用C#写</p>
+<h2 id="正文">正文</h2>
+<h3 id="构思">构思</h3>
+<h4 id="基本实现">基本实现</h4>
+<ul>
+<li><strong>自启动</strong>：计划任务即可</li>
+<li><strong>检测网络通断</strong>：用API实现，不采用当时一开始的ping的想法</li>
+<li><strong>获取IP</strong>：API</li>
+<li><strong>发邮件</strong>：<del>SMTP</del> MS Graph API</li>
+</ul>
+<p>没有什么复杂的地方，也就是一个顺序过程<br>
+</p>
+<h4 id="升级">升级</h4>
+<p>自启动后循环执行过程，不再通过计划任务多次调用</p>
+<p>如果网络不可用则5分钟检查一次，直到成功（或者使用库中相关方法？如果存在）。</p>
+<h3 id="查资料">查资料</h3>
+<h4 id="有关基本实现">有关基本实现</h4>
+<h5 id="网络部分">网络部分</h5>
+<p>很容易搜索到这个文档： <a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/fundamentals/networking/network-info">网络可用性
+- .NET | Microsoft Learn<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>里面提到了 System.Net.NetworkInformation 命名空间，接着往下看<a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.net.networkinformation?view=net-10.0">文档<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>找到<a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.net.networkinformation.networkinterface?view=net-10.0">NetworkInterface<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>中<a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.net.networkinformation.networkinterface.getisnetworkavailable?view=net-10.0">NetworkInterface.GetIsNetworkAvailable
+方法<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>可以获取网络可用性</p>
+<p>其中还有GetAllNetworkInterfaces()方法，返回NetworkInterface[]对象数组</p>
+<p>根据查询途中遇到的文档示例：NetworkInterface[] -&gt; NetworkInterface
+-&gt; IPInterfaceProperties</p>
+<p>要获取网络配置，应该是先获取网络接口对象，使用GetIPProperties()方法，返回IPInterfaceProperties对象</p>
+<p>查看<a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.net.networkinformation.ipinterfaceproperties?view=net-10.0">IPInterfaceProperties
+类<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>文档</p>
+<p>“提供有关支持 Internet 协议版本 4 (IPv4) 或 Internet 协议版本 6
+(IPv6) 的网络接口的信息。” 很接近我们想要的获取IP了</p>
+<p>示例基本上达成了我们的目的，只需要稍加改动，结合NetworkInterface.GetIPProperties
+方法下的示例</p>
+<h5 id="邮件部分">邮件部分</h5>
+<p><del>找到<a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.net.mail.smtpclient?view=net-8.0">SmtpClient
+类<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>和<a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.net.mail.mailmessage?view=net-8.0">MailMessage
+类<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></del></p>
+<p><del>不过，在SmtpClient类中，文档明确提到“不建议使用SmtpClient
+类进行新的开发，因为 SmtpClient 不支持许多新式协议。 请改用 MailKit
+或其他库。”，我先不管他，仍然使用</del></p>
+<p><del>参考示例修改即可</del></p>
+<p>我打算使用Microsoft的邮箱发送，结果看了<a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365">如何设置多功能设备或应用程序以使用
+Microsoft 365 或 Office 365
+发送电子邮件<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>才发现，这样子发邮件需要账户密码才行，我不太想这样。</p>
+<p>只能改用MS Graph
+API了，记得里面有Email.Send权限什么的，应该可以。</p>
+<p>看文档<a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/graph/sdks/choose-authentication-providers?tabs=csharp">根据方案选择Microsoft
+Graph 身份验证提供程序<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>看得一头雾水。还是问AI吧。</p>
+<blockquote><p>💎 总结：如何选？</p>
+<ol type="1">
+<li><strong>你的程序是无后台、由用户触发、代表个人发信吗？</strong> →
+<strong>授权码流</strong>（方案二）</li>
+<li><strong>你的程序是无人值守服务、定时任务、或需要发信给大量用户吗？</strong>
+→ <strong>客户端凭据流 + 访问策略锁定邮箱</strong>（方案一）</li>
+<li><strong>你是 SharePoint 扩展或特定微软低代码平台？</strong> →
+实质也是<strong>授权码流</strong>，但由平台托管登录。</li>
+</ol>
+<p>如果你的场景是<strong>典型的 ASP.NET Core
+后台服务</strong>，直接套用<strong>客户端凭据流 +
+访问策略</strong>是最干净、最合规的做法。需要我提供该模式下<strong>配合应用访问策略锁定特定发信邮箱</strong>的
+PowerShell 脚本示例吗？</p>
+<footer><strong>Deepseek-V3.2</strong></footer></blockquote>
+<p>我只截了一部分，看AI的话，我应该选择方案一，就这样。</p>
+<p>在<a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/graph/sdks/choose-authentication-providers?tabs=csharp">根据方案选择Microsoft
+Graph
+身份验证提供程序<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>中很容易找到<code>客户端凭据提供程序</code>节。</p>
+<p>邮件发送有<a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/graph/api/user-sendmail?view=graph-rest-1.0&amp;tabs=csharp">user：sendMail<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>参考文档即可。</p>
+<h4 id="后续更改">后续更改</h4>
+<ul>
+<li><a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.net.networkinformation.networkchange?view=net-10.0">NetworkChange
+类<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>：允许应用程序在网络接口 Internet 协议 (IP)
+地址（也称为网卡或适配器）更改时接收通知</li>
+<li><a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.net.networkinformation.networkchange.networkavailabilitychanged?view=net-10.0">NetworkChange.NetworkAvailabilityChanged
+事件<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>：在网络的可用性更改时发生。</li>
+</ul>
+<h3 id="构想">构想</h3>
+<h4 id="基本实现构想">基本实现构想</h4>
+<pre class="mermaid">graph TD
+    A[从计划任务启动] --&gt; B1{判断网络连通性}
+    subgraph 网络
+        B1 --&gt;|未连接到互联网| C1[等待计划任务再次调用（退出,1）]
+        B1 --&gt;|连接到互联网| D1[获取网络接口]
+        D1 --&gt;|遍历接口| E1[获取网络接口属性]
+        E1 --&gt; F1[获取地址]
+    end
+
+    F1 --&gt; C[组织邮件内容]
+    C --&gt; C2
+
+    subgraph 邮件
+        C2[填入内容]
+        B2[初始化graphClient] --&gt; C2["初始化信息邮件(收件人等)"]
+        C2 --&gt; D2["发送(随后退出,0)"]
+    end</pre>
+<h3 id="写代码配置">写代码&amp;配置</h3>
+<h4 id="程序">程序</h4>
+<p>添加<a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/azure.identity">Azure.Identity
+包<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>和<a class="link" target="_blank" rel="noopener" href="https://github.com/microsoftgraph/msgraph-sdk-dotnet">Microsoft.Graph
+包<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>这里采用了四个示例，分别复制自<a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.net.networkinformation.networkinterface.getipproperties?view=net-10.0">GetIPProperties
+方法<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>、<a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/api/system.net.networkinformation.ipinterfaceproperties?view=net-10.0">IPInterfaceProperties
+类<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>、<a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/graph/sdks/choose-authentication-providers?tabs=csharp#using-a-client-secret">客户端凭据提供程序<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>和<a class="link" target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/graph/api/user-sendmail?view=graph-rest-1.0&amp;tabs=csharp#example-1-send-a-new-email-using-json-format">使用
+JSON 格式发送新电子邮件<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p><em>Rider帮我在组织邮件内容时提示了<code>Environment.NewLine</code>挺好的，原来还有这个东西，学习了。</em></p>
+<blockquote>
+<p>不过据AI(DS)所说 SMTP 协议标准（以及 Microsoft Graph 邮件
+API）通常要求换行符为 \r\n</p>
+</blockquote>
+<p>根据AI询问，我选择这里使用StringBuilder来组织字符串内容，然后Append中手动使用
+\r\n</p>
+<p>最后代码如下：</p>
+<div class="code-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Net.NetworkInformation;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> Azure.Identity;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Graph;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Graph.Models;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Graph.Users.Item.SendMail;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="built_in">string</span> <span class="title">GetEmailContent</span>()</span></span><br><span class="line">{</span><br><span class="line">    <span class="keyword">var</span> sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取全部的网络接口，进行遍历</span></span><br><span class="line">    NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();</span><br><span class="line">    <span class="keyword">foreach</span> (NetworkInterface adapter <span class="keyword">in</span> nics)</span><br><span class="line">    {</span><br><span class="line">        <span class="comment">// 滤除既不支持v4也不支持v6的接口</span></span><br><span class="line">        <span class="keyword">if</span> (!(adapter.Supports(NetworkInterfaceComponent.IPv4) ||  adapter.Supports(NetworkInterfaceComponent.IPv6)))</span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加接口信息</span></span><br><span class="line">        sb.Append(adapter.Description + <span class="string">"\r\n"</span>);</span><br><span class="line">        sb.Append(String.Empty.PadLeft(adapter.Description.Length,<span class="string">'='</span>) + <span class="string">"\r\n"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获得接口属性信息，遍历添加多播和单播IP地址</span></span><br><span class="line">        IPInterfaceProperties adapterProperties = adapter.GetIPProperties();</span><br><span class="line">        MulticastIPAddressInformationCollection multiCast = adapterProperties.MulticastAddresses;</span><br><span class="line">        <span class="keyword">if</span> (multiCast != <span class="literal">null</span>)</span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">foreach</span> (MulticastIPAddressInformation multi <span class="keyword">in</span> multiCast)</span><br><span class="line">            { </span><br><span class="line">                sb.Append(<span class="string">$"  Multicast Address ....................... : <span class="subst">{multi.Address}</span> "</span> + <span class="string">"\r\n"</span>);</span><br><span class="line">            }</span><br><span class="line">            sb.Append(<span class="string">"\r\n"</span>);</span><br><span class="line">        }</span><br><span class="line">        UnicastIPAddressInformationCollection uniCast = adapterProperties.UnicastAddresses;</span><br><span class="line">        <span class="keyword">if</span> (uniCast != <span class="literal">null</span>)</span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">foreach</span> (UnicastIPAddressInformation uni <span class="keyword">in</span> uniCast) </span><br><span class="line">            {</span><br><span class="line">                sb.Append(<span class="string">$"  Unicast Address ....................... : <span class="subst">{uni.Address}</span> "</span> + <span class="string">"\r\n"</span>);</span><br><span class="line">            }</span><br><span class="line">            sb.Append(<span class="string">"\r\n"</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// StringBuilder不是String</span></span><br><span class="line">    <span class="keyword">return</span> sb.ToString();</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">async</span> Task <span class="title">SendEmailByGraphApi</span>(<span class="params"><span class="built_in">string</span> content</span>)</span></span><br><span class="line">{</span><br><span class="line">    <span class="comment">// 一些Graph客户端的基本设置</span></span><br><span class="line">    <span class="keyword">var</span> scopes = <span class="keyword">new</span>[] { <span class="string">"https://graph.microsoft.com/.default"</span> };</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> clientId = <span class="string">"YOUR_CLIENT_ID"</span>;</span><br><span class="line">    <span class="keyword">var</span> tenantId = <span class="string">"YOUR_TENANT_ID"</span>;</span><br><span class="line">    <span class="keyword">var</span> clientSecret = <span class="string">"YOUR_CLIENT_SECRET"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> options = <span class="keyword">new</span> ClientSecretCredentialOptions</span><br><span class="line">    {</span><br><span class="line">        AuthorityHost = AzureAuthorityHosts.AzurePublicCloud,</span><br><span class="line">    };</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> clientSecretCredential = <span class="keyword">new</span> ClientSecretCredential(</span><br><span class="line">        tenantId, clientId, clientSecret, options);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> graphClient = <span class="keyword">new</span> GraphServiceClient(clientSecretCredential, scopes);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 组织邮件</span></span><br><span class="line">    <span class="keyword">var</span> requestBody = <span class="keyword">new</span> SendMailPostRequestBody</span><br><span class="line">    {</span><br><span class="line">        Message = <span class="keyword">new</span> Message</span><br><span class="line">        {</span><br><span class="line">            Subject = <span class="string">"IP"</span>,</span><br><span class="line">            Body = <span class="keyword">new</span> ItemBody</span><br><span class="line">            {</span><br><span class="line">                ContentType = BodyType.Text,</span><br><span class="line">                Content = content,</span><br><span class="line">            },</span><br><span class="line">            ToRecipients = <span class="keyword">new</span> List&lt;Recipient&gt;</span><br><span class="line">            {</span><br><span class="line">                <span class="keyword">new</span> Recipient</span><br><span class="line">                {</span><br><span class="line">                    EmailAddress = <span class="keyword">new</span> EmailAddress</span><br><span class="line">                    {</span><br><span class="line">                        Address = <span class="string">"frannis@contoso.com"</span>,</span><br><span class="line">                    },</span><br><span class="line">                },</span><br><span class="line">            },</span><br><span class="line">        },</span><br><span class="line">        SaveToSentItems = <span class="literal">false</span>,</span><br><span class="line">    };</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 非登录应用程序调用不能用Me方法，在示例踩坑了</span></span><br><span class="line">    <span class="keyword">await</span> graphClient.Users[<span class="string">"sender@contoso.com"</span>].SendMail.PostAsync(requestBody);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!NetworkInterface.GetIsNetworkAvailable())</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> content = GetEmailContent();</span><br><span class="line"><span class="keyword">await</span> SendEmailByGraphApi(content);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure></div>
+<h4 id="graph应用程序">Graph应用程序</h4>
+<p>登录<a class="link" target="_blank" rel="noopener" href="https://portal.azure.com/">Azure
+Portal<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，找到应用注册，注册<code>EmailSender</code>应用程序</p>
+<p>配置中找到<code>API 权限</code>。 添加权限-&gt;Microsoft
+Graph-&gt;应用程序权限-&gt;<code>Mail.Send</code>-&gt;添加权限</p>
+<p>我自己用的，这里就直接<code>代表授予管理员同意</code></p>
+<p>然后在应用程序概述中，复制<code>clientId</code>和<code>tenantId</code>(应用程序(客户端)
+ID 和 目录(租户)
+ID)，写到<code>YOUR_CLIENT_ID</code>和<code>YOUR_TENANT_ID</code></p>
+<p>然后转到<code>证书和密码</code>，选择<code>新客户端密码</code>，添加一个，然后复制值，写到<code>YOUR_CLIENT_SECRET</code></p>
+<div class="callout callout--titled default mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2"><div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div><div class="flex flex-col gap-2"><div class="callout__title flex items-center gap-2 font-semibold tracking-tight"><i class="callout__icon fa-solid fa-info leading-none text-(--callout-primary-color) text-sm shrink-0"></i> 信息</div><div class="callout__content markdown-body flex-1 min-w-0"><p>记得妥善保管，因为值内容仅在初次创建时显示。</p></div></div></div>
+<h2 id="基本功能完成">基本功能完成</h2>
+<p><del><em>有关后续的改进，等我想写了再写吧；感谢Rider的支持</em></del></p>
+<h2 id="其他">其他</h2>
+<p>主要参考了微软的文档（主要就是那些示例），并有的时候询问了AI(Deepseek)。</p>
+<p>主要问了：</p>
+<ul>
+<li>网络连通性判断</li>
+<li>Microsoft365 使用 Graph API 发送邮件可以使用哪些身份认证方式</li>
+<li>一些错误的修复</li>
+</ul>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> [水]起于2026-01-31 23:03的一件事</li>
+        <li><strong>作者:</strong> Austerity(Misaka10548)</li>
+        <li><strong>创建于
+                :</strong> 2026-02-11 18:44:13</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2026-02-12 11:01:42
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://austerity.irislc.net//post/2026/02/11/7875c8a8/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E6%B0%B4/">#水</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/C/">#C#</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E9%82%AE%E4%BB%B6/">#邮件</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/Microsoft-Graph-API/">#Microsoft Graph API</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/Microsoft-365/">#Microsoft 365</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/post/2026/04/21/2af82fbe/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">关于自己博客的一些想法</span>
+						<span class="post-nav-item">上一篇</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/post/2025/12/06/4a17b156/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">Hello World</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script data-swup-reload-script
+            src="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js"></script>
+    <script data-swup-reload-script>
+        (function() {
+            const startPath = location.pathname;
+            const startTime = Date.now();
+            const retryDelay = 200;
+            const retryLimit = 5000;
+
+            const runGitalk = () => {
+                if (location.pathname !== startPath) {
+                    return;
+                }
+
+                const container = document.getElementById('gitalk-container');
+                if (!container || typeof Gitalk === 'undefined') {
+                    if (Date.now() - startTime < retryLimit) {
+                        setTimeout(runGitalk, retryDelay);
+                    }
+                    return;
+                }
+
+                container.innerHTML = '';
+
+                let pageKey = decodeURI(location.pathname);
+                const maxLength = 50;
+                if (pageKey.length > maxLength) {
+                    pageKey = pageKey.substring(0, maxLength - 3) + '...';
+                }
+
+                try {
+                    new Gitalk({
+                        clientID: 'Ov23lioNbmvhz5hgHU5W',
+                        clientSecret: '4438f5098de16bc2dfd9952039744ef8a987718e',
+                        repo: 'misaka10548.github.io',
+                        owner: 'misaka10548',
+                        admin: ['misaka10548'],
+                        id: pageKey,
+                        language: 'zh-CN',
+                        proxy: 'https://github.com/login/oauth/access_token'
+                    }).render(container);
+                } catch (e) {
+                    window.Gitalk = null;
+                }
+            };
+
+            runGitalk();
+        })();
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">目录</div>
+		<div class="page-title">[水]起于2026-01-31 23:03的一件事</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%B7%E4%BA%8E"><span class="nav-number">1.</span> <span class="nav-text">起于</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E6%80%9D"><span class="nav-number">2.1.</span> <span class="nav-text">构思</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.1.1.</span> <span class="nav-text">基本实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%87%E7%BA%A7"><span class="nav-number">2.1.2.</span> <span class="nav-text">升级</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%B5%84%E6%96%99"><span class="nav-number">2.2.</span> <span class="nav-text">查资料</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E5%85%B3%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.2.1.</span> <span class="nav-text">有关基本实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">网络部分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%82%AE%E4%BB%B6%E9%83%A8%E5%88%86"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">邮件部分</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD%E6%9B%B4%E6%94%B9"><span class="nav-number">2.2.2.</span> <span class="nav-text">后续更改</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E6%83%B3"><span class="nav-number">2.3.</span> <span class="nav-text">构想</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0%E6%9E%84%E6%83%B3"><span class="nav-number">2.3.1.</span> <span class="nav-text">基本实现构想</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE"><span class="nav-number">2.4.</span> <span class="nav-text">写代码&amp;配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.4.1.</span> <span class="nav-text">程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#graph%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.4.2.</span> <span class="nav-text">Graph应用程序</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E5%AE%8C%E6%88%90"><span class="nav-number">3.</span> <span class="nav-text">基本功能完成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">4.</span> <span class="nav-text">其他</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2025</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Austerity(Misaka10548)</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 6 篇文章
+                    </span>
+                    
+                        <span>
+                            共 11.4k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+		<li class="right-bottom-tools rss flex justify-center items-center">
+			<a class="flex justify-center items-center" href="/atom.xml" target="_blank">
+				<i class="fa-regular fa-rss"></i>
+			</a>
+		</li>
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="图片查看器">
+	<button class="image-viewer-close" type="button" aria-label="关闭">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="上一页">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="关闭">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="下一页">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="站内搜索您需要的内容..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    window.swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+
+    window.dispatchEvent(
+        new CustomEvent("redefine:swup:ready", {
+            detail: {
+                swup: window.swup,
+            },
+        }),
+    );
+</script>
+
+
+
+
+	
+<script src="/js/build/main.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+
+
+
+    
+        
+<script src="/js/build/libs/mermaid.min.js"></script>
+
+    
+
+
+
+
+
+    
+<script src="/js/build/libs/minimasonry.min.js" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
+</body>
+
+</html>

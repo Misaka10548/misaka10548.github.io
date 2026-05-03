@@ -1,7 +1,11 @@
-https://misaka10548.github.io/2026/02/11/7875c8a8/
+https://misaka10548.github.io/post/2026/04/26/f6f390df/
+https://misaka10548.github.io/post/2026/04/21/2af82fbe/
+https://misaka10548.github.io/post/2026/04/24/186f33f1/
+https://misaka10548.github.io/post/2026/05/03/f6f390df/
+https://misaka10548.github.io/post/2026/02/11/7875c8a8/
 https://misaka10548.github.io/about/index.html
 https://misaka10548.github.io/masonry/index.html
-https://misaka10548.github.io/2025/12/06/4a17b156/
+https://misaka10548.github.io/post/2025/12/06/4a17b156/
 https://misaka10548.github.io/links/index.html
 https://misaka10548.github.io/categories/index.html
 https://misaka10548.github.io/essays/index.html
@@ -13,4 +17,13 @@ https://misaka10548.github.io/tags/C/
 https://misaka10548.github.io/tags/%E9%82%AE%E4%BB%B6/
 https://misaka10548.github.io/tags/Microsoft-Graph-API/
 https://misaka10548.github.io/tags/Microsoft-365/
+https://misaka10548.github.io/tags/%E8%A7%A3%E5%AF%86/
+https://misaka10548.github.io/tags/%E9%87%8D%E8%BF%94%E6%9C%AA%E6%9D%A5%EF%BC%9A1999/
+https://misaka10548.github.io/tags/AI%E8%BE%85%E5%8A%A9/
+https://misaka10548.github.io/tags/%E5%8D%9A%E5%AE%A2/
+https://misaka10548.github.io/tags/LLM/
 https://misaka10548.github.io/categories/%E7%81%8C%E6%B0%B4/
+https://misaka10548.github.io/categories/%E8%A7%A3%E8%B0%9C/
+https://misaka10548.github.io/categories/AI/
+https://misaka10548.github.io/categories/AI/LLM/
+https://misaka10548.github.io/categories/AI/LLM/DeepSeek/
