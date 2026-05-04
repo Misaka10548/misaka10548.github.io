@@ -833,12 +833,12 @@ y)</strong> 位置字符的 ASCII 码压入栈</li>
 <p>来一个简单的示例，HelloWorld：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"!dlroW ,olleH"&gt;:#,_@</span><br></pre></td></tr></table></figure></div>
 <p>能注意到这里的字符是倒序的，是因为栈是<code>后入先出（LIFO）</code>的原因</p>
-<p>我们先逐字符的将<code>Hello, World!</code>压入栈，然后让控制流向右<br>
-我们先复制栈顶值，因为后面的<code>,</code>和<code>_</code>都会弹出一次栈顶<br>
-然后来到<code>#</code>跳过输出<code>,</code>，进入控制语句<code>_</code>，弹栈<br>
-现在栈里面是有东西的，所以指针移动方向会被改成向左<br>
-<code>,</code>输出、弹栈，<code>#</code>防止等下多次运行<code>:</code>跳过这条语句<br>
-遇到<code>&gt;</code>指针移动方向变成向右，重复以上步骤~
+<p>我们先逐字符的将<code>Hello, World!</code>压入栈，然后让控制流向右(<code>&gt;</code>)<br>
+我们先复制栈顶值(<code>:</code>)，因为后面的<code>,</code>和<code>_</code>都会弹出一次栈顶<br>
+然后来到<code>#</code>跳过输出(<code>,</code>)，进入控制语句(<code>_</code>)，弹栈<br>
+现在栈里面是有东西的，所以指针移动方向会被改成向左（这里是控制语句<code>_</code>的作用）<br>
+输出、弹栈(<code>,</code>)，<code>#</code>防止等下多次运行<code>:</code>跳过这条语句<br>
+遇到<code>&gt;</code>指针移动方向变成向右，重复以上步骤~<br>
 最后栈为空的时候<code>:</code>复制0，<code>_</code>向右到<code>@</code>，结束~</p>
 <h4 id="回到解谜-1">回到解谜</h4>
 <p>再这样看代码：</p>
