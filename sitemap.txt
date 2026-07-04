@@ -1,3 +1,4 @@
+https://misaka10548.github.io/post/2026/07/04/b771d9cf/
 https://misaka10548.github.io/post/2026/05/24/adf1a97d/
 https://misaka10548.github.io/post/2026/04/26/f6f390df/
 https://misaka10548.github.io/post/2026/04/21/2af82fbe/
@@ -27,9 +28,11 @@ https://misaka10548.github.io/tags/Minecraft/
 https://misaka10548.github.io/tags/WebRTC/
 https://misaka10548.github.io/tags/WebRTC-ICE/
 https://misaka10548.github.io/tags/STUN-TURN/
+https://misaka10548.github.io/tags/OSU/
 https://misaka10548.github.io/categories/%E7%81%8C%E6%B0%B4/
 https://misaka10548.github.io/categories/%E8%A7%A3%E8%B0%9C/
 https://misaka10548.github.io/categories/AI/
 https://misaka10548.github.io/categories/AI/LLM/
 https://misaka10548.github.io/categories/AI/LLM/DeepSeek/
 https://misaka10548.github.io/categories/Minecraft/
+https://misaka10548.github.io/categories/OSU/
